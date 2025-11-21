@@ -1,0 +1,15 @@
+artifact_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_url: https://drive.google.com/uc?id=1aehKgW7G0hxNAukqZCm17vDIbn2_8ZGx
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
+prepare_base_model:
+  root_dir: artifacts/prepareBaseModel
+  base_model_path: artifacts/prepareBaseModel/base_model.h5
+
+training:
+  root_dir: artifacts/training
+  trained_model_path: artifacts/training/model.h5

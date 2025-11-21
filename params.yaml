@@ -1,0 +1,27 @@
+PREPROCESSING:
+  FREQ: "D"
+  FILL_METHOD: "ffill"
+  TRAIN_TEST_SPLIT_RATIO: 0.8
+
+MODEL:
+  TYPE: "arima"
+  P: 1
+  D: 1
+  Q: 1
+  SEASONAL: false
+  M: 0
+  ENFORCE_STATIONARITY: true
+  ENFORCE_INVERTIBILITY: true
+
+TUNING:
+  ENABLED: false
+  SEARCH: "grid"
+  P_VALUES: [0,1,2]
+  D_VALUES: [0,1]
+  Q_VALUES: [0,1,2]
+
+FORECAST:
+  HORIZON: 30
+  CONF_INT: 0.95
+
+METRICS: ["mae","rmse","mape"]
