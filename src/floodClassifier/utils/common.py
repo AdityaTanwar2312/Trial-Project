@@ -75,16 +75,6 @@ def create_directories(path_to_directories: list, verbose: bool = True) -> None:
 
 
 def save_json(path_to_json: Path, data: object, replace: bool = False) -> None:
-    """Saves data to a json file
-
-    Args:
-        path_to_json (Path): Path to the json file
-        data (Any): Data to be saved
-        replace (bool, optional): Whether to replace the existing file. Defaults to False.
-
-    Raises:
-        e: Exception if there is an error in saving the json file
-    """
     try:
         if path_to_json.exists() and replace is False:
             logger.info(f"json file: {path_to_json} already exists. Not overwriting.")
@@ -97,15 +87,6 @@ def save_json(path_to_json: Path, data: object, replace: bool = False) -> None:
     
 @ensure_annotations
 def load_json(path_to_json: Path) -> Any:
-    """Loads data from a json file
-
-    Args:
-        path_to_json (Path): Path to the json file
-    Raises:
-        e: Exception if there is an error in loading the json file
-    Returns:
-        Any: Data loaded from the json file
-    """
     try:
         with open(path_to_json, 'r') as json_file:
             data = json.load(json_file)
@@ -116,15 +97,6 @@ def load_json(path_to_json: Path) -> Any:
 
 @ensure_annotations
 def save_bin(data: Any, path_to_bin: Path) -> None:
-    """Saves data to a binary file using joblib
-
-    Args:
-        data (Any): Data to be saved
-        path_to_bin (Path): Path to the binary file
-
-    Raises:
-        e: Exception if there is an error in saving the binary file
-    """
     try:
         joblib.dump(data, path_to_bin)
         logger.info(f"Binary file: {path_to_bin} saved successfully")
@@ -133,15 +105,6 @@ def save_bin(data: Any, path_to_bin: Path) -> None:
 
 @ensure_annotations
 def load_bin(path_to_bin: Path) -> Any:
-    """Loads data from a binary file using joblib
-
-    Args:
-        path_to_bin (Path): Path to the binary file
-    Raises:
-        e: Exception if there is an error in loading the binary file
-    Returns:
-        Any: Data loaded from the binary file
-    """
     try:
         data = joblib.load(path_to_bin)
         logger.info(f"Binary file: {path_to_bin} loaded successfully")
@@ -151,17 +114,6 @@ def load_bin(path_to_bin: Path) -> Any:
     
 @ensure_annotations
 def encode_image_to_base64(image_path: Path) -> str:
-    """Encodes an image to a base64 string
-
-    Args:
-        image_path (Path): Path to the image file
-
-    Raises:
-        e: Exception if there is an error in encoding the image
-
-    Returns:
-        str: Base64 encoded string of the image
-    """
     try:
         with open(image_path, "rb") as image_file:
             encoded_string = base64.b64encode(image_file.read()).decode('utf-8')
@@ -172,15 +124,6 @@ def encode_image_to_base64(image_path: Path) -> str:
 
 @ensure_annotations
 def decode_base64_to_image(base64_string: str, output_image_path: Path) -> None:
-    """Decodes a base64 string to an image file
-
-    Args:
-        base64_string (str): Base64 encoded string of the image
-        output_image_path (Path): Path to save the decoded image file
-
-    Raises:
-        e: Exception if there is an error in decoding the image
-    """
     try:
         image_data = base64.b64decode(base64_string)
         with open(output_image_path, "wb") as image_file:
